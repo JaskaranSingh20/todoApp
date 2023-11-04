@@ -161,8 +161,9 @@ const TodoList = () => {
         //     router.push('/')
         // }
         
+        fetchData();
+        
         if(snap.user){
-            fetchData();
             setUserName(snap.user);
             toast.success(`Welcome ${snap.user}!!`, { position: "top-right", autoClose: 5000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
