@@ -31,6 +31,14 @@ const addData = async (data) =>{
 const TodoList = () => {
     
     const snap = useSnapshot(state);
+
+    if(snap.user != ""){
+        toast.success(`Welcome ${snap.user}!!`, { position: "top-right", autoClose: 5000, hideProgressBar: false,
+            closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
+            theme: "light",
+            });
+    }
+
     const router = useRouter();
     const [userName, setUserName] = useState("");
 
@@ -156,10 +164,10 @@ const TodoList = () => {
 
     useEffect(()=>{      // to get stored data when component mounts
         
+        fetchData();
+        setUserName(snap.user);
         
         if(snap.user != ""){
-            fetchData();
-            setUserName(snap.user);
             toast.success(`Welcome ${snap.user}!!`, { position: "top-right", autoClose: 5000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
                 theme: "light",
