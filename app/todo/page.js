@@ -156,10 +156,10 @@ const TodoList = () => {
 
     useEffect(()=>{      // to get stored data when component mounts
         
-        if(snap.user === ""){
-            console.log("sign out yha se hora h :) ");
-            router.push('/')
-        }
+        // if(snap.user === ""){
+        //     console.log("sign out yha se hora h :) ");
+        //     router.push('/')
+        // }
         
         if(snap.user){
             fetchData();
