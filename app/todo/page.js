@@ -29,8 +29,9 @@ const addData = async (data) =>{
 }
 
 const TodoList = () => {
-    const router = useRouter();
+    
     const snap = useSnapshot(state);
+    const router = useRouter();
     const [userName, setUserName] = useState("");
 
     const [todoData, setTodoData] = useState("");              // todo data
@@ -154,16 +155,21 @@ const TodoList = () => {
     }
 
     useEffect(()=>{      // to get stored data when component mounts
-        fetchData();
+        
+        if(snap.user === ""){
+            console.log("sign out yha se hora h :) ");
+            router.push('/')
+        }
         
         if(snap.user){
-            console.log("Snap  "+ snap.user)
+            fetchData();
             setUserName(snap.user);
             toast.success(`Welcome ${snap.user}!!`, { position: "top-right", autoClose: 5000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
                 theme: "light",
                 });
         }
+
     },[])
 
     const handleUpdateClick = (todo)=>{
