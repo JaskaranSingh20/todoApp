@@ -50,7 +50,7 @@ const TodoList = () => {
 
             querySnapshot.forEach((doc) => {
             // console.log(`${doc.id} => ${doc.data()}`);
-            console.log(doc.data());
+            // console.log(doc.data());
             todosArray.push({id: doc.id, ...doc.data()});
             });
             setAllTodo(todosArray)
@@ -156,14 +156,9 @@ const TodoList = () => {
 
     useEffect(()=>{      // to get stored data when component mounts
         
-        // if(snap.user === ""){
-        //     console.log("sign out yha se hora h :) ");
-        //     router.push('/')
-        // }
         
-        fetchData();
-        
-        if(snap.user){
+        if(snap.user != ""){
+            fetchData();
             setUserName(snap.user);
             toast.success(`Welcome ${snap.user}!!`, { position: "top-right", autoClose: 5000, hideProgressBar: false,
                 closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
